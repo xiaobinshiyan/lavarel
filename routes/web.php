@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('about',function(){
+		return view('about');
+});
+Route::get('index','WelcomeController@index');
+Route::get('/task','TaskController@home');
+Route::resource('post','PostController');
+Route::fallback(function(){
+	return '404';
+});
