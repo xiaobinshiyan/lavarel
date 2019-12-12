@@ -23,3 +23,8 @@ Route::resource('post','PostController');
 Route::fallback(function(){
 	return '404';
 });
+Route::post('form','RequestController@form');
+//用于显示上传表单
+Route::get('form','RequestController@formPage');
+//用于处理文件上传
+Route::post('form/file_upload', 'RequestController@fileUpload');
