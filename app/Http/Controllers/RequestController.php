@@ -4,20 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Rules\SensitiveWordRule;
+
 class RequestController extends Controller
 {
     public function form(Request $request)
     {
     	$id = $request->input('id');
     	echo $id;exit();
-    	  print_r($request->all());exit();
+    	print_r($request->all());exit();
     }
+    public function add()
+    {
+        return view('request.add');
+    }
+    public function insert(Request $request)
+    {
+        $this->validate($request, [
+           'title' => ['required', 'string', new SensitiveWordRule],
+           'url' => 'sometimes|url|max:200',
+           'picture' => 'nullable|string'
+        ], [
+           'title.required' => '标题字段不能为空',
+           'title.string' => '标题字段仅支持字符串',
+           // 'title.between' => '标题长度必须介于2-32之间',
+           'url.url' => 'URL格式不正确，请输入有效的URL',
+           'url.max' => 'URL长度不能超过200',
+        ]);
+        // print_r($request->all());exit();
+        return response('表单验证通过');
+    }
+
     public function formPage()
     {
     	return view('request.form');
     }
     public function fileUpload(Request $request)
     {
+        $this->validate($request, [
+            'picture' => 'bail|required|image|mimes:jpg,png,jpeg|max:1024'
+        ],[
+            'picture.required' => '请选择要上传的图片',
+            'picture.image' => '只支持上传图片',
+            'picture.mimes' => '只支持上传jpg/png/jpeg格式图片',
+            'picture.max' => '上传图片超过最大尺寸限制(1M)'
+        ]);
     	if ($request->hasFile('picture')) {
     		$picture = $request->file('picture');
     		if (! $picture->isValid()) {

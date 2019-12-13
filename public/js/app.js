@@ -49942,6 +49942,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $('#picture-path').val(response.data.path);
                 $('#picture-preview').html('<img src="' + response.data.path + '">');
             }).catch(function (error) {
+                $.each(error.response.data.errors, function (field, errors) {
+                    $('#picture-preview').append('<div class="alert alert-danger">' + errors[0] + '</div>');
+                });
                 console.log(error);
             });
         }

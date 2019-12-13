@@ -24,6 +24,8 @@ Route::fallback(function(){
 	return '404';
 });
 Route::post('form','RequestController@form');
+Route::get('form/add','RequestController@add');
+Route::post('form/insert','RequestController@insert')->name('form.submit');
 //用于显示上传表单
 Route::get('form','RequestController@formPage');
 //用于处理文件上传
