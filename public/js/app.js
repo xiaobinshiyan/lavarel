@@ -49924,6 +49924,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -49935,7 +49939,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(function (response) {
-                console.log(response);
+                $('#picture-path').val(response.data.path);
+                $('#picture-preview').html('<img src="' + response.data.path + '">');
             }).catch(function (error) {
                 console.log(error);
             });
@@ -49959,7 +49964,11 @@ var render = function() {
       staticClass: "form-control-file",
       attrs: { type: "file", id: "picture" },
       on: { change: _vm.uploadFile }
-    })
+    }),
+    _vm._v(" "),
+    _c("input", { attrs: { type: "hidden", id: "picture-path", value: "" } }),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "picture-preview" } })
   ])
 }
 var staticRenderFns = []

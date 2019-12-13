@@ -8,6 +8,10 @@
     <div class="form-group">
         <label for="picture">上传一张图片</label>
         <input type="file" class="form-control-file" id="picture" ref="picture" v-on:change="uploadFile"/>
+        <input type="hidden" id="picture-path" value="">
+         <div id="picture-preview">
+
+         </div>
     </div>
 </template>
 
@@ -26,7 +30,8 @@
                         }
                     }
                 ).then(function (response) {
-                    console.log(response);
+                    $('#picture-path').val(response.data.path);
+                    $('#picture-preview').html('<img src="' + response.data.path + '">')
                 }).catch(function (error) {
                     console.log(error);
                 });
