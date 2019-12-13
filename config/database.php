@@ -41,17 +41,26 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            // 'host' => env('DB_HOST', '127.0.0.1'),
+            'read' => [
+                'host' => env('DB_HOST_READ', '127.0.0.1'),
+                'database' => env('DB_DATABASE', 'thinkphp_read'),
+            ],
+            'write' => [
+                'host' => env('DB_HOST_WRITE', '127.0.0.1'),
+                'database' => env('DB_DATABASE_WRITE', 'thinkphp'),
+            ],
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            'charset' => 'utf8',
+            'collation' => 'utf8_general_ci',
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'sticky' => true,
         ],
 
         'pgsql' => [
