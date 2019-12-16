@@ -30,6 +30,8 @@ Route::post('form/insert','RequestController@insert')->name('form.submit');
 Route::get('form','RequestController@formPage');
 //用于处理文件上传
 Route::post('form/file_upload', 'RequestController@fileUpload');
+
+//测试项目
 Route::get('/book',function(){
 	return view('books.book');
 });
