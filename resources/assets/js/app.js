@@ -8,7 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+// import VueRouter from 'vue-router'
+// Vue.use(VueRouter)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -18,6 +19,8 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('welcome-component', require('./components/WelcomeComponent.vue'));
 Vue.component('fileupload-component', require('./components/FileUploadComponent.vue'));
+Vue.component('booklist-component', require('./components/BookListComponent.vue'));
+Vue.component('digest-component', require('./components/DigestComponent.vue'));
 const app = new Vue({
     el: '#app'
 });

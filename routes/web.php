@@ -30,3 +30,11 @@ Route::post('form/insert','RequestController@insert')->name('form.submit');
 Route::get('form','RequestController@formPage');
 //用于处理文件上传
 Route::post('form/file_upload', 'RequestController@fileUpload');
+Route::get('/book',function(){
+	return view('books.book');
+});
+Route::get('/digest/{id}','DigestController@digestList');
+// Route::get('/book/bookList','BookController@bookList');
+
+
+
