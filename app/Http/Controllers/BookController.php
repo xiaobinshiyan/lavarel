@@ -29,12 +29,22 @@ class BookController extends Controller
         return $list;
     }
 
+    /**
+     * 获取书本信息
+     * @param  int $id 书本主键
+     * @return object     书本信息
+     */
     public function bookInfo($id)
     {
         $info = Book::findOrFail($id);
         return $info;
     }
 
+    /**
+     * 点击量添加
+     * @param  int $id 书本主键
+     * @return object
+     */
     public function click($id) 
     {
         $res = Book::where('id', '=', $id)->increment('clicks');

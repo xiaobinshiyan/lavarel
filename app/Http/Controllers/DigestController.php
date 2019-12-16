@@ -11,11 +11,11 @@ use App\Digest;
  */
 class DigestController extends Controller
 {
-		/**
-		 * [digestList description]
-		 * @param  [type] $book_id [description]
-		 * @return [type]          [description]
-		 */
+	/**
+	 * [digestList description]
+	 * @param  [type] $book_id [description]
+	 * @return [type]          [description]
+	 */
     public function digestList($book_id)
     {
     	// $posts = Digest::where('book_id', '=', $book_id)->select('*')->get();
@@ -23,7 +23,7 @@ class DigestController extends Controller
     }
 
     /**
-     * [FunctionName description]
+     * 获取信息
      * @param string $value [description]
      */
     public function digests($book_id)
@@ -32,6 +32,11 @@ class DigestController extends Controller
     	return $posts;
     }
 
+    /**
+     * 删除
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function delete($id)
     {
         $f = Digest::destroy([$id]);
