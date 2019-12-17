@@ -74,7 +74,7 @@ class BookController extends Controller
            'sort.required' => '排序不能为空',
            'sort.numeric' => '排序必须是数字',
         ]);
-        $book_id = $request->input('book_id');
+        $book_id = $request->input('book_id',0);
         $name = $request->input('name');
         $author = $request->input('author');
         $sort = $request->input('sort');
