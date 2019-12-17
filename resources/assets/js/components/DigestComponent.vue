@@ -71,7 +71,6 @@
           },
           offset: 4,
           items: [],
-          lists: [],
           book_info: [],
           nolist: 1,
           book_id:book_id
@@ -127,23 +126,15 @@
                  });
               }
             },
-            getDigestList(id) {
-              var that = this;
-              axios.get('/api/digest/digests/' + id).then(function(response){
-                // console.log(response.data)
-                that.lists = response.data;
-                if (that.lists.length == 0) {
-                  that.nolist = 0;
-                }
-              })
-            },
             fetchItems: function (page,id) {
                 var that = this;
                 var data = {page: page};
                 axios.get('/api/digest/digests/' + id + '?page='+page).then(function (response) {
                     // that.$set('items', response.data.data.data);
                     that.items = response.data.data.data;
-                    // that.$set('pagination', response.data.pagination);
+                    if (that.items.length == 0) {
+                      that.nolist = 0;
+                    }
                     that.pagination = response.data.pagination;
                 }, function (error) {
                     // handle error
