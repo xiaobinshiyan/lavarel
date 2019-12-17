@@ -35,7 +35,9 @@ Route::post('form/file_upload', 'RequestController@fileUpload');
 Route::get('/book',function(){
 	return view('books.book');
 });
+Route::get('book/create/{id?}', 'BookController@bookAdd');
 Route::get('/digest/{id}','DigestController@digestList');
+
 // Route::get('/book/bookList','BookController@bookList');
 
 

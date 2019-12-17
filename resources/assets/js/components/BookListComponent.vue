@@ -31,7 +31,7 @@
    	</div>
    </div>
    <div class="col-sm-12 text-right">
-   	<a href="javascript:;" class="btn btn-success">添加</a>
+   	<a href="/book/create" class="btn btn-success">添加</a>
    </div> 
    </div>
 </template>

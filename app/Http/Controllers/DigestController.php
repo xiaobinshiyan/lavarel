@@ -18,7 +18,6 @@ class DigestController extends Controller
 	 */
     public function digestList($book_id)
     {
-    	// $posts = Digest::where('book_id', '=', $book_id)->select('*')->get();
       return view('books.digest')->with('book_id', $book_id);
     }
 
@@ -36,7 +35,7 @@ class DigestController extends Controller
      * 删除
      * @param  [type] $id [description]
      * @return [type]     [description]
-     */
+    */
     public function delete($id)
     {
         $f = Digest::destroy([$id]);
