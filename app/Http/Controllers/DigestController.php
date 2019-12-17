@@ -27,8 +27,24 @@ class DigestController extends Controller
      */
     public function digests($book_id)
     {
-    	$posts = Digest::where('book_id', '=', $book_id)->where('status',1)->orderBy('created_at', 'desc')->select('*')->get();
-    	return $posts;
+        $results =  Digest::latest()
+        ->where('book_id',$book_id)
+        ->where('status',1)
+        ->orderBy('created_at', 'desc')
+        ->paginate(7);
+        $response = [
+            'pagination' => [
+                'total' => $results->total(),
+                'per_page' => $results->perPage(),
+                'current_page' => $results->currentPage(),
+                'last_page' => $results->lastPage(),
+                'from' => $results->firstItem(),
+                'to' => $results->lastItem()
+            ],
+            'data' => $results
+        ];
+        
+        return $response; 
     }
 
     /**

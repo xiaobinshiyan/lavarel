@@ -50381,52 +50381,126 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      lists: [],
-      book_info: [],
-      nolist: 1
-    };
-  },
-  created: function created() {
-    // 获取路由参数id
-    this.getBookInfo(book_id);
-    this.getDigestList(book_id);
-  },
+    data: function data() {
+        return {
+            pagination: {
+                total: 0,
+                per_page: 7,
+                from: 1,
+                to: 0,
+                current_page: 1
+            },
+            offset: 4,
+            items: [],
+            lists: [],
+            book_info: [],
+            nolist: 1,
+            book_id: book_id
+        };
+    },
+    created: function created() {
+        // 获取路由参数id
+        this.getBookInfo(book_id);
+        // this.getDigestList(book_id);
+        this.fetchItems(this.pagination.current_page, book_id);
+    },
 
-  methods: {
-    getBookInfo: function getBookInfo(id) {
-      var that = this;
-      axios.get('/api/book/bookinfo/' + id).then(function (response) {
-        that.book_info = response.data;
-      });
-    },
-    deletes: function deletes(id) {
-      var that = this;
-      if (confirm('确定要删除吗') == true) {
-        axios.get('/api/digest/delete/' + id).then(function (response) {
-          var index = that.lists.findIndex(function (item) {
-            if (item.id == id) {
-              return true;
+    computed: {
+        isActived: function isActived() {
+            return this.pagination.current_page;
+        },
+        pagesNumber: function pagesNumber() {
+            if (!this.pagination.to) {
+                return [];
             }
-          });
-          that.lists.splice(index, 1);
-        });
-      }
-    },
-    getDigestList: function getDigestList(id) {
-      var that = this;
-      axios.get('/api/digest/digests/' + id).then(function (response) {
-        // console.log(response.data)
-        that.lists = response.data;
-        if (that.lists.length == 0) {
-          that.nolist = 0;
+            var from = this.pagination.current_page - this.offset;
+            if (from < 1) {
+                from = 1;
+            }
+            var to = from + this.offset * 2;
+            if (to >= this.pagination.last_page) {
+                to = this.pagination.last_page;
+            }
+            var pagesArray = [];
+            while (from <= to) {
+                pagesArray.push(from);
+                from++;
+            }
+            return pagesArray;
         }
-      });
+    },
+    methods: {
+        getBookInfo: function getBookInfo(id) {
+            var that = this;
+            axios.get('/api/book/bookinfo/' + id).then(function (response) {
+                that.book_info = response.data;
+            });
+        },
+        deletes: function deletes(id) {
+            var that = this;
+            if (confirm('确定要删除吗') == true) {
+                axios.get('/api/digest/delete/' + id).then(function (response) {
+                    var index = that.lists.findIndex(function (item) {
+                        if (item.id == id) {
+                            return true;
+                        }
+                    });
+                    that.lists.splice(index, 1);
+                });
+            }
+        },
+        getDigestList: function getDigestList(id) {
+            var that = this;
+            axios.get('/api/digest/digests/' + id).then(function (response) {
+                // console.log(response.data)
+                that.lists = response.data;
+                if (that.lists.length == 0) {
+                    that.nolist = 0;
+                }
+            });
+        },
+
+        fetchItems: function fetchItems(page, id) {
+            var that = this;
+            var data = { page: page };
+            axios.get('/api/digest/digests/' + id + '?page=' + page).then(function (response) {
+                // that.$set('items', response.data.data.data);
+                that.items = response.data.data.data;
+                // that.$set('pagination', response.data.pagination);
+                that.pagination = response.data.pagination;
+            }, function (error) {
+                // handle error
+            });
+        },
+        changePage: function changePage(page) {
+            console.log(page);
+            this.pagination.current_page = page;
+            this.fetchItems(page, this.book_id);
+        }
     }
-  }
 });
 
 /***/ }),
@@ -50460,7 +50534,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._l(_vm.lists, function(row) {
+      _vm._l(_vm.items, function(row) {
         return _c("div", { staticClass: "well" }, [
           _c("p", [_vm._v(_vm._s(row.id) + ".  " + _vm._s(row.content))]),
           _vm._v(" "),
@@ -50483,6 +50557,81 @@ var render = function() {
           ])
         ])
       }),
+      _vm._v(" "),
+      _c("nav", [
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _vm.pagination.current_page > 1
+              ? _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#", "aria-label": "Previous" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.changePage(_vm.pagination.current_page - 1)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("«")
+                      ])
+                    ]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.pagesNumber, function(page) {
+              return _c(
+                "li",
+                { class: [page == _vm.isActived ? "active" : ""] },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.changePage(page)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(page))]
+                  )
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm.pagination.current_page < _vm.pagination.last_page
+              ? _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#", "aria-label": "Next" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.changePage(_vm.pagination.current_page + 1)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("»")
+                      ])
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ]),
       _vm._v(" "),
       _vm.nolist == 0 ? [_vm._m(1)] : _vm._e(),
       _vm._v(" "),
@@ -50515,7 +50664,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-12 text-right" }, [
-      _c("a", { staticClass: "btn btn-success", attrs: { href: "/book" } }, [
+      _c("a", { staticClass: "btn btn-success", attrs: { href: "/" } }, [
         _vm._v("返回")
       ]),
       _vm._v("\n           \n      "),
@@ -50729,7 +50878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         that.errors = '';
         that.submitted = true;
         setTimeout(function () {
-          window.location.href = "/book";
+          window.location.href = "/";
         }, 1000);
       }).catch(function (error) {
         that.errors = error.response.data.errors;
@@ -50737,7 +50886,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     history: function history() {
-      window.location.href = "/book";
+      window.location.href = "/";
     },
     resetField: function resetField() {
       this.infoa = {
