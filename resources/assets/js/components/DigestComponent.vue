@@ -14,12 +14,12 @@
           <p>
           <h3>{{book_info.name}}</h3></p>
           <p>{{book_info.author}}</p>
-          <p><i>阅读量：{{book_info.clicks}}&nbsp;&nbsp;&nbsp;&nbsp;创建时间：{{book_info.created_at.split(" ")[0]}}</i></p>
+          <p><i>阅读量：{{book_info.clicks}}&nbsp;&nbsp;&nbsp;&nbsp;创建时间：{{book_info.created_at}}</i></p>
       </div>
       <div class="well" v-for="row in items">
           <p>{{row.id}}. &nbsp;{{row.content}}</p>
           <p style="text-align: right">{{row.created_at}} &nbsp;&nbsp;
-          &nbsp;&nbsp;<a href="digest_edit.html"><span class="glyphicon glyphicon-pencil"></span></a>
+          &nbsp;&nbsp;<a href="javascript:;" v-on:click="editDigest(row.id)"><span class="glyphicon glyphicon-pencil"></span></a>
           &nbsp;&nbsp;<a href="javascript:;" v-on:click="deletes(row.id)"><span class="glyphicon glyphicon-trash"></span></a></p>
       </div>
         <nav>
@@ -46,14 +46,14 @@
       <template v-if="nolist == 0">
         <ul class="list-group">
            <li class="list-group-item">
-               暂无文章，去添加一个吧
+               暂无笔记，去添加一个吧
            </li>
         </ul>
       </template>
     <div class="col-sm-12 text-right">
       <a href="/" class="btn btn-success">返回</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="/book/bookadd" class="btn btn-success">添加</a>
+      <a href="/digest/add/info" class="btn btn-success">添加</a>
     </div>  
    </div>
 </template>
@@ -117,14 +117,17 @@
               var that = this;
               if(confirm('确定要删除吗')==true){
                 axios.get('/api/digest/delete/' + id).then(function(response){
-                    var index = that.lists.findIndex(item =>{
+                    var index = that.items.findIndex(item =>{
 　　　　　　　　　　　　  if(item.id == id){
 　　　　　　　　　　　　    return true
 　　　　　　　　　　　　  }
 　　　　　　　　　　　　})
-                    that.lists.splice(index,1)
+                    that.items.splice(index,1)
                  });
               }
+            },
+            editDigest(id) {
+              window.location.href = '/digest/edit/' + id;
             },
             fetchItems: function (page,id) {
                 var that = this;

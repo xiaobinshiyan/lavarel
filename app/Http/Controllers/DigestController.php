@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Digest;
 /**
  * 文章列表api控制器
@@ -48,6 +49,21 @@ class DigestController extends Controller
     }
 
     /**
+     * 获取单个笔记信息
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function digestInfo($id)
+    {
+      // $post = Digest::find($id);
+      $info = DB::table('digest')
+      ->join('book', 'digest.book_id', '=', 'book.id')
+      ->select('digest.*', 'book.name')
+      ->where('digest.id',$id)
+      ->get();
+      return $info;
+    }
+    /**
      * 删除
      * @param  [type] $id [description]
      * @return [type]     [description]
@@ -59,5 +75,48 @@ class DigestController extends Controller
         $post->status = 2;
         $post->save();
         return 1;
+    }
+
+    /**
+     * 编辑
+     * @param  string $value [description]
+     * @return [type]        [description]
+     */
+    public function digestEdit($id = 0)
+    {
+        return view('books.digestoperate')->with('digest_id', $id);
+    }
+
+    /**
+     * 进行更新操作
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function digestSave(Request $request)
+    {
+      $this->validate($request, [
+         'content'   => 'required',
+         'bookid'   => 'required|numeric'
+      ], [
+         'content.required'=> '书名不能为空',
+         'bookid.required'   => '书目不能为空',
+         'bookid.numeric'    => '书目必须是数字',
+      ]);
+      $digest_id = $request->input('digest_id',0);
+      $book_id = $request->input('bookid');
+      $content = $request->input('content');
+      if ($digest_id == 0) {
+          // add
+          $res = Digest::firstOrCreate([
+              'content'   => $content,
+              'book_id' => $book_id
+          ]);
+      } else {
+          $post = Digest::find($digest_id);
+          $post->content = $content;
+          $post->book_id = $book_id;
+          $res = $post->save();
+      }
+      return response(1);   
     }
 }

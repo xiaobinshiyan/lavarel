@@ -486,33 +486,6 @@ module.exports = function normalizeComponent (
 /* 2 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -592,7 +565,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -817,6 +790,33 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -3546,7 +3546,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
 /* 7 */
@@ -14598,7 +14598,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
@@ -14629,6 +14629,7 @@ Vue.component('fileupload-component', __webpack_require__(51));
 Vue.component('booklist-component', __webpack_require__(56));
 Vue.component('digest-component', __webpack_require__(61));
 Vue.component('bookadd-component', __webpack_require__(66));
+Vue.component('digestop-component', __webpack_require__(71));
 var app = new Vue({
   el: '#app'
 });
@@ -31812,7 +31813,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(18)(module)))
 
 /***/ }),
 /* 18 */
@@ -49159,7 +49160,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(40).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(40).setImmediate))
 
 /***/ }),
 /* 40 */
@@ -49229,7 +49230,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 41 */
@@ -49422,7 +49423,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(9)))
 
 /***/ }),
 /* 42 */
@@ -49605,7 +49606,7 @@ var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("3af5029b", content, false, {});
+var update = __webpack_require__(3)("3af5029b", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49624,7 +49625,7 @@ if(false) {
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -49880,7 +49881,7 @@ var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("122732b3", content, false, {});
+var update = __webpack_require__(3)("122732b3", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49899,7 +49900,7 @@ if(false) {
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -50050,7 +50051,7 @@ var content = __webpack_require__(58);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("257f7d50", content, false, {});
+var update = __webpack_require__(3)("257f7d50", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50069,7 +50070,7 @@ if(false) {
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -50307,7 +50308,7 @@ var content = __webpack_require__(63);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("01eb894c", content, false, {});
+var update = __webpack_require__(3)("01eb894c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50326,7 +50327,7 @@ if(false) {
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -50415,7 +50416,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             offset: 4,
             items: [],
-            lists: [],
             book_info: [],
             nolist: 1,
             book_id: book_id
@@ -50463,24 +50463,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var that = this;
             if (confirm('确定要删除吗') == true) {
                 axios.get('/api/digest/delete/' + id).then(function (response) {
-                    var index = that.lists.findIndex(function (item) {
+                    var index = that.items.findIndex(function (item) {
                         if (item.id == id) {
                             return true;
                         }
                     });
-                    that.lists.splice(index, 1);
+                    that.items.splice(index, 1);
                 });
             }
         },
-        getDigestList: function getDigestList(id) {
-            var that = this;
-            axios.get('/api/digest/digests/' + id).then(function (response) {
-                // console.log(response.data)
-                that.lists = response.data;
-                if (that.lists.length == 0) {
-                    that.nolist = 0;
-                }
-            });
+        editDigest: function editDigest(id) {
+            window.location.href = '/digest/edit/' + id;
         },
 
         fetchItems: function fetchItems(page, id) {
@@ -50489,7 +50482,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/digest/digests/' + id + '?page=' + page).then(function (response) {
                 // that.$set('items', response.data.data.data);
                 that.items = response.data.data.data;
-                // that.$set('pagination', response.data.pagination);
+                if (that.items.length == 0) {
+                    that.nolist = 0;
+                }
                 that.pagination = response.data.pagination;
             }, function (error) {
                 // handle error
@@ -50528,7 +50523,7 @@ var render = function() {
               "阅读量：" +
                 _vm._s(_vm.book_info.clicks) +
                 "    创建时间：" +
-                _vm._s(_vm.book_info.created_at.split(" ")[0])
+                _vm._s(_vm.book_info.created_at)
             )
           ])
         ])
@@ -50540,7 +50535,18 @@ var render = function() {
           _vm._v(" "),
           _c("p", { staticStyle: { "text-align": "right" } }, [
             _vm._v(_vm._s(row.created_at) + "   \n            "),
-            _vm._m(0, true),
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:;" },
+                on: {
+                  click: function($event) {
+                    return _vm.editDigest(row.id)
+                  }
+                }
+              },
+              [_c("span", { staticClass: "glyphicon glyphicon-pencil" })]
+            ),
             _vm._v("\n            "),
             _c(
               "a",
@@ -50633,9 +50639,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm.nolist == 0 ? [_vm._m(1)] : _vm._e(),
+      _vm.nolist == 0 ? [_vm._m(0)] : _vm._e(),
       _vm._v(" "),
-      _vm._m(2)
+      _vm._m(1)
     ],
     2
   )
@@ -50645,17 +50651,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "digest_edit.html" } }, [
-      _c("span", { staticClass: "glyphicon glyphicon-pencil" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "list-group" }, [
       _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("\n               暂无文章，去添加一个吧\n           ")
+        _vm._v("\n               暂无笔记，去添加一个吧\n           ")
       ])
     ])
   },
@@ -50670,7 +50668,7 @@ var staticRenderFns = [
       _vm._v("\n           \n      "),
       _c(
         "a",
-        { staticClass: "btn btn-success", attrs: { href: "/book/bookadd" } },
+        { staticClass: "btn btn-success", attrs: { href: "/digest/add/info" } },
         [_vm._v("添加")]
       )
     ])
@@ -50747,7 +50745,7 @@ var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("b6d0a668", content, false, {});
+var update = __webpack_require__(3)("b6d0a668", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50766,7 +50764,7 @@ if(false) {
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -51100,6 +51098,399 @@ if (false) {
 
 /***/ }),
 /* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(72)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(75)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-62cc1691"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DigestOpComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62cc1691", Component.options)
+  } else {
+    hotAPI.reload("data-v-62cc1691", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(73);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("a68236c6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62cc1691\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DigestOpComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62cc1691\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DigestOpComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.digest_count[data-v-62cc1691]{\n   float:right;\n   width:70px;\n}\n.list-group-item[data-v-62cc1691]{\nmargin-bottom:0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      info: {
+        name: '',
+        content: '',
+        book_id: ''
+      },
+      digest_id: digest_id,
+      errors: [],
+      lists: [],
+      submitted: false,
+      book_selected: ''
+    };
+  },
+  created: function created() {
+    if (this.digest_id != 0) {
+      this.getDigestInfo();
+    }
+    this.getBookInfo();
+    // this.book_selected = this.info.book_id;
+    // console.log(this.book_selected)
+  },
+
+  methods: {
+    getDigestInfo: function getDigestInfo() {
+      var that = this;
+      axios.get('/api/digest/digestinfo/' + that.digest_id).then(function (response) {
+        // console.log(response.data)
+        that.info = {
+          name: response.data[0].name,
+          content: response.data[0].content,
+          book_id: response.data[0].book_id
+        };
+        that.book_selected = that.info.book_id;
+      });
+    },
+    getBookInfo: function getBookInfo() {
+      var that = this;
+      axios.get('/api/book/bookList').then(function (response) {
+        that.lists = response.data;
+        // console.log(that.lists[0].book_id)
+        if (that.digest_id == 0) {
+          that.book_selected = that.lists[0].id;
+          that.$set(that.info, 'book_id', that.lists[0].id);
+        }
+      });
+    },
+    getBookSelect: function getBookSelect() {
+      this.$set(this.info, 'book_id', this.book_selected);
+    },
+    bookAdd: function bookAdd(event) {
+      var that = this;
+      var formData = new FormData(event.target);
+      axios.post('/api/digest/save', formData).then(function (response) {
+        that.errors = '';
+        that.submitted = true;
+        setTimeout(function () {
+          window.location.href = "/digest/" + that.info.book_id;
+        }, 1000);
+      }).catch(function (error) {
+        that.errors = error.response.data.errors;
+      });
+    },
+    goback: function goback() {
+      window.location.href = "/digest/" + this.info.book_id;
+    },
+    resetField: function resetField() {
+      this.$set(this.info, 'content', '');
+    }
+  }
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "appw" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.submitted
+      ? _c("div", { staticClass: "alert alert-success" }, [
+          _vm._v("\n    操作成功!\n  ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "form-horizontal",
+        attrs: { role: "form", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.bookAdd($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "col-sm-12" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.book_selected,
+                        expression: "book_selected"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "bookid" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.book_selected = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        _vm.getBookSelect
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.lists, function(item) {
+                    return _c("option", { domProps: { value: item.id } }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c(
+              "textarea",
+              {
+                staticClass: "form-control",
+                attrs: { rows: "8", name: "content", placeholder: "填写内容" }
+              },
+              [_vm._v(_vm._s(_vm.info.content))]
+            ),
+            _vm._v(" "),
+            _vm.errors.author
+              ? _c("span", { staticClass: "help-block" }, [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(_vm.errors.author.join(",")) +
+                      "\n              "
+                  )
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "col-sm-12 text-center" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.digest_id,
+                  expression: "digest_id"
+                }
+              ],
+              attrs: { type: "hidden", name: "digest_id" },
+              domProps: { value: _vm.digest_id },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.digest_id = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "btn btn-info",
+              attrs: { type: "button", value: "返回" },
+              on: { click: _vm.goback }
+            }),
+            _vm._v("     \n              "),
+            _c("input", {
+              staticClass: "btn btn-warning",
+              attrs: { type: "button", value: "重置" },
+              on: { click: _vm.resetField }
+            }),
+            _vm._v("     \n              "),
+            _c("input", {
+              staticClass: "btn btn-success",
+              attrs: { type: "submit", value: "提交" }
+            })
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-center", staticStyle: { margin: "10px 0" } },
+      [_c("h2", [_vm._v("读书笔记操作")])]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62cc1691", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

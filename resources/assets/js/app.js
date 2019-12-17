@@ -22,6 +22,7 @@ Vue.component('fileupload-component', require('./components/FileUploadComponent.
 Vue.component('booklist-component', require('./components/BookListComponent.vue'));
 Vue.component('digest-component', require('./components/DigestComponent.vue'));
 Vue.component('bookadd-component', require('./components/BookAddComponent.vue'));
+Vue.component('digestop-component',require('./components/DigestOpComponent.vue'));
 const app = new Vue({
     el: '#app'
 });

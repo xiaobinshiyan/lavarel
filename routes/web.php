@@ -40,7 +40,8 @@ Route::get('/book',function(){
 });
 Route::get('book/create/{id?}', 'BookController@bookAdd');
 Route::get('/digest/{id}','DigestController@digestList');
-
+Route::get('/digest/edit/{id?}','DigestController@digestEdit');
+Route::get('/digest/add/info','DigestController@digestEdit');
 // Route::get('/book/bookList','BookController@bookList');
 
 
