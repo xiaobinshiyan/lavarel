@@ -27,7 +27,7 @@ class DigestController extends Controller
      */
     public function digests($book_id)
     {
-    	$posts = Digest::where('book_id', '=', $book_id)->select('*')->get();
+    	$posts = Digest::where('book_id', '=', $book_id)->orderBy('created_at', 'desc')->select('*')->get();
     	return $posts;
     }
 
