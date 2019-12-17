@@ -30,7 +30,7 @@
         </ul>
       </template>
     <div class="col-sm-12 text-right">
-      <a href="/book" class="btn btn-success">返回</a>
+      <a href="/" class="btn btn-success">返回</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="/book/bookadd" class="btn btn-success">添加</a>
     </div>  

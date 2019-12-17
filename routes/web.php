@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('about',function(){
 		return view('about');
 });
@@ -32,7 +32,7 @@ Route::get('form','RequestController@formPage');
 Route::post('form/file_upload', 'RequestController@fileUpload');
 
 //测试项目
-Route::get('/book',function(){
+Route::get('/',function(){
 	return view('books.book');
 });
 Route::get('book/create/{id?}', 'BookController@bookAdd');

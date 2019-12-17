@@ -93,7 +93,7 @@
                 that.errors = '';
                 that.submitted = true;
                 setTimeout(function(){
-                  window.location.href = "/book"
+                  window.location.href = "/"
                 }, 1000);
               }).catch(function (error) {
                 that.errors = error.response.data.errors;
@@ -101,7 +101,7 @@
               });
             },
             history() {
-              window.location.href = "/book"
+              window.location.href = "/"
             },
             resetField() {
               this.infoa = {
