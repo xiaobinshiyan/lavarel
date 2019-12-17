@@ -65,14 +65,14 @@ class BookController extends Controller
     public function bookSave(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|max:45',
+           'name'   => 'required|max:45',
            'author' => 'required|max:45',
-           'sort' => 'required|numeric'
+           'sort'   => 'required|numeric'
         ], [
-           'name.required' => '书名不能为空',
+           'name.required'   => '书名不能为空',
            'author.required' => '作者不能为空',
-           'sort.required' => '排序不能为空',
-           'sort.numeric' => '排序必须是数字',
+           'sort.required'   => '排序不能为空',
+           'sort.numeric'    => '排序必须是数字',
         ]);
         $book_id = $request->input('book_id',0);
         $name = $request->input('name');
@@ -81,9 +81,9 @@ class BookController extends Controller
         if ($book_id == 0) {
             // add
             $res = Book::firstOrCreate([
-                'name' => $name,
+                'name'   => $name,
                 'author' => $author,
-                'sort' => $sort
+                'sort'   => $sort
             ]);
         } else {
             $post = Book::find($book_id);
