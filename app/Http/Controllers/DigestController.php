@@ -27,7 +27,7 @@ class DigestController extends Controller
      */
     public function digests($book_id)
     {
-    	$posts = Digest::where('book_id', '=', $book_id)->orderBy('created_at', 'desc')->select('*')->get();
+    	$posts = Digest::where('book_id', '=', $book_id)->where('status',1)->orderBy('created_at', 'desc')->select('*')->get();
     	return $posts;
     }
 
@@ -38,7 +38,10 @@ class DigestController extends Controller
     */
     public function delete($id)
     {
-        $f = Digest::destroy([$id]);
-        return $f;
+        // $f = Digest::destroy([$id]);
+        $post = Digest::find($id);
+        $post->status = 2;
+        $post->save();
+        return 1;
     }
 }
