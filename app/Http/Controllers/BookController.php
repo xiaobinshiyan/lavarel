@@ -17,7 +17,10 @@ class BookController extends Controller
 		 */
     public function bookList()
     {
-        $list = Book::all();
+        // $list = Book::all();
+        $list = Book::where('status', 1)
+               ->orderBy('clicks', 'desc')
+               ->get();
         if (! empty($list)) {
             foreach ($list as $k => $v) {
                 $digests = Book::findOrFail($v['id']);
