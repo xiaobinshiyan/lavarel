@@ -54,7 +54,7 @@
       <a href="/" class="btn btn-success">返回</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="/digest/add/info" class="btn btn-success">添加</a>
-    </div>  
+    </div>
    </div>
 </template>
 
@@ -123,6 +123,10 @@
 　　　　　　　　　　　　  }
 　　　　　　　　　　　　})
                     that.items.splice(index,1)
+                    if (that.items.length == 0) {
+                        that.nolist = 0
+                        window.location.reload()
+                    }
                  });
               }
             },

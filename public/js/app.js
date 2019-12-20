@@ -49606,7 +49606,7 @@ var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("3af5029b", content, false, {});
+var update = __webpack_require__(3)("161d8efb", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49881,7 +49881,7 @@ var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("122732b3", content, false, {});
+var update = __webpack_require__(3)("74626b5a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50051,7 +50051,7 @@ var content = __webpack_require__(58);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("257f7d50", content, false, {});
+var update = __webpack_require__(3)("772940f8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50186,7 +50186,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n            " + _vm._s(row.name) + "\n            "
+                    "\r\n            " + _vm._s(row.name) + "\r\n            "
                   ),
                   _c("span", { staticClass: "digest_count" }, [
                     _vm._v("笔记：" + _vm._s(row.num))
@@ -50220,7 +50220,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "list-group" }, [
       _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("\n               暂无书目，去添加一个吧\n           ")
+        _vm._v("\r\n               暂无书目，去添加一个吧\r\n           ")
       ])
     ])
   },
@@ -50308,7 +50308,7 @@ var content = __webpack_require__(63);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("01eb894c", content, false, {});
+var update = __webpack_require__(3)("534ff0ec", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50469,6 +50469,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     });
                     that.items.splice(index, 1);
+                    if (that.items.length == 0) {
+                        that.nolist = 0;
+                        window.location.reload();
+                    }
                 });
             }
         },
@@ -50745,7 +50749,7 @@ var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("b6d0a668", content, false, {});
+var update = __webpack_require__(3)("7fc0392c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50909,7 +50913,7 @@ var render = function() {
     _vm._v(" "),
     _vm.submitted
       ? _c("div", { staticClass: "alert alert-success" }, [
-          _vm._v("\n    操作成功!\n  ")
+          _vm._v("\r\n    操作成功!\r\n  ")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -50953,9 +50957,9 @@ var render = function() {
             _vm.errors.name
               ? _c("span", { staticClass: "help-block" }, [
                   _vm._v(
-                    "\n                  " +
+                    "\r\n                  " +
                       _vm._s(_vm.errors.name.join(",")) +
-                      "\n              "
+                      "\r\n              "
                   )
                 ])
               : _vm._e()
@@ -50989,9 +50993,9 @@ var render = function() {
             _vm.errors.author
               ? _c("span", { staticClass: "help-block" }, [
                   _vm._v(
-                    "\n                  " +
+                    "\r\n                  " +
                       _vm._s(_vm.errors.author.join(",")) +
-                      "\n              "
+                      "\r\n              "
                   )
                 ])
               : _vm._e()
@@ -51024,7 +51028,9 @@ var render = function() {
             _vm._v(" "),
             _vm.errors.sorta
               ? _c("span", { staticClass: "help-block" }, [
-                  _vm._v("\n                  排序请正确书写\n              ")
+                  _vm._v(
+                    "\r\n                  排序请正确书写\r\n              "
+                  )
                 ])
               : _vm._e()
           ])
@@ -51058,13 +51064,13 @@ var render = function() {
               attrs: { type: "button", value: "返回" },
               on: { click: _vm.history }
             }),
-            _vm._v("     \n              "),
+            _vm._v("     \r\n              "),
             _c("input", {
               staticClass: "btn btn-warning",
               attrs: { type: "button", value: "重置" },
               on: { click: _vm.resetField }
             }),
-            _vm._v("     \n              "),
+            _vm._v("     \r\n              "),
             _c("input", {
               staticClass: "btn btn-success",
               attrs: { type: "submit", value: "提交" }
@@ -51158,7 +51164,7 @@ var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("a68236c6", content, false, {});
+var update = __webpack_require__(3)("36a7e43d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -51335,7 +51341,7 @@ var render = function() {
     _vm._v(" "),
     _vm.submitted
       ? _c("div", { staticClass: "alert alert-success" }, [
-          _vm._v("\n    操作成功!\n  ")
+          _vm._v("\r\n    操作成功!\r\n  ")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -51414,9 +51420,9 @@ var render = function() {
             _vm.errors.author
               ? _c("span", { staticClass: "help-block" }, [
                   _vm._v(
-                    "\n                  " +
+                    "\r\n                  " +
                       _vm._s(_vm.errors.author.join(",")) +
-                      "\n              "
+                      "\r\n              "
                   )
                 ])
               : _vm._e()
@@ -51451,13 +51457,13 @@ var render = function() {
               attrs: { type: "button", value: "返回" },
               on: { click: _vm.goback }
             }),
-            _vm._v("     \n              "),
+            _vm._v("     \r\n              "),
             _c("input", {
               staticClass: "btn btn-warning",
               attrs: { type: "button", value: "重置" },
               on: { click: _vm.resetField }
             }),
-            _vm._v("     \n              "),
+            _vm._v("     \r\n              "),
             _c("input", {
               staticClass: "btn btn-success",
               attrs: { type: "submit", value: "提交" }
